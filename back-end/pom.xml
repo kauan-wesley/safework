@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Spring Boot -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -13,7 +12,6 @@
         <relativePath/>
     </parent>
 
-    <!-- Informações do projeto -->
     <groupId>com.safework</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -21,7 +19,6 @@
     <name>SafeWork</name>
     <description>Backend da aplicação SafeWork</description>
 
-    <!-- Java -->
     <properties>
         <java.version>25</java.version>
     </properties>
@@ -47,6 +44,13 @@
             <scope>runtime</scope>
         </dependency>
 
+        <!-- H2 - usado no ambiente do Render -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <!-- Validação -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -68,13 +72,14 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Testes -->
+        <!-- Testes JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa-test</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <!-- Testes Web MVC -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webmvc-test</artifactId>
@@ -87,7 +92,7 @@
 
         <plugins>
 
-            <!-- Spring Boot Maven Plugin -->
+            <!-- Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -100,6 +105,7 @@
 
                 <executions>
 
+                    <!-- Compilação principal -->
                     <execution>
                         <id>default-compile</id>
                         <phase>compile</phase>
@@ -109,7 +115,6 @@
                         </goals>
 
                         <configuration>
-
                             <annotationProcessorPaths>
 
                                 <path>
@@ -118,11 +123,10 @@
                                 </path>
 
                             </annotationProcessorPaths>
-
                         </configuration>
-
                     </execution>
 
+                    <!-- Compilação dos testes -->
                     <execution>
                         <id>default-testCompile</id>
                         <phase>test-compile</phase>
@@ -132,7 +136,6 @@
                         </goals>
 
                         <configuration>
-
                             <annotationProcessorPaths>
 
                                 <path>
@@ -141,13 +144,10 @@
                                 </path>
 
                             </annotationProcessorPaths>
-
                         </configuration>
-
                     </execution>
 
                 </executions>
-
             </plugin>
 
         </plugins>
