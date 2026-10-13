@@ -1,16 +1,17 @@
+
 const form = document.getElementById("contactForm");
 
-form.addEventListener("submit", function(event) {
+if (form) {
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    event.preventDefault();
+        const nome = document.getElementById("nome").value.trim();
 
-    const nome = document.getElementById("nome").value;
+        alert(
+            "Olá, " + nome +
+            "! Sua mensagem foi recebida."
+        );
 
-    alert(
-        "Olá, " + nome +
-        "! Sua mensagem foi recebida."
-    );
-
-    form.reset();
-
-});
+        form.reset();
+    });
+}
